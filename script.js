@@ -5,19 +5,28 @@ const currencySelect = document.querySelector('.currency-select-for');
 
 
 //3º criar uma função para converter valores
-function convertValues() {
+const convertValues = async () => {
     const inputCurrencyValue = document.querySelector(".input-currency").value;
     const currencyValueToConvert = document.querySelector('.currency-value-to-convert');
     const currencyValueToConvert2 = document.querySelector('.currency-value-to-convert2');
     const currencyValueConverted = document.querySelector('.currency-value');
 
+    //async await buscando informações em tempo real
+
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL").then( response => response.json())
+
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
+    const bitcoinToday = data.BTCBRL.high;
+    const libraToday = data.GBPBRL.high;
+
+    console.log(data)
 
 
-    const dolarToday = 4.91;
-    const euroToday = 5.35;
-    const bitcoinToday = 183.418;
-    const libraToday = 6.14;
+   
     const realToday = 0.20;
+
+    
 
 
     // Conversão : DE
